@@ -1,7 +1,7 @@
 package com.oauth.client.service;
 
 import com.oauth.client.domain.KakaoUser;
-import com.oauth.client.domain.NaverUser;
+import com.oauth.client.domain.SampleUser;
 import com.oauth.client.domain.ProviderUser;
 import com.oauth.client.domain.User;
 import com.oauth.client.repository.UserRepository;
@@ -34,8 +34,8 @@ public abstract class AbstractOAuth2UserService {
         if(registrationId.equals("kakao")){
             return new KakaoUser(oAuth2User,clientRegistration);
         }
-        else if(registrationId.equals("naver")){
-            return new NaverUser(oAuth2User,clientRegistration);
+        else if(registrationId.equals("sample")){
+            return new SampleUser(oAuth2User,clientRegistration);
         }
         return null;
     }

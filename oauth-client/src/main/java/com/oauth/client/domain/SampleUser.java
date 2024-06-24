@@ -7,9 +7,9 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.util.List;
 import java.util.Map;
 
-public class NaverUser extends OAuth2ProviderUser {
+public class SampleUser extends OAuth2ProviderUser {
 
-    public NaverUser(OAuth2User oAuth2User, ClientRegistration clientRegistration) {
+    public SampleUser(OAuth2User oAuth2User, ClientRegistration clientRegistration) {
         super(oAuth2User, clientRegistration);
     }
 
@@ -64,7 +64,7 @@ public class NaverUser extends OAuth2ProviderUser {
     }
 
     public Map<String, Object> getAttributes() {
-        return this.getAttributes();
+        return super.getAttributes();
     }
 }
 
