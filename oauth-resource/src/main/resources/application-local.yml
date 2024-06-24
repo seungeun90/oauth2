@@ -1,0 +1,21 @@
+server:
+  port: 90
+  servlet.context-path: /resource
+spring:
+  application:
+    name: oauth2-resource
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:83/realms/oauth2/protocol/openid-connect/certs
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } - [%-40.40logger{39}][%3.6(%X{method}) %-6.-50(%X{uri})][%5.15(%X{ip})][%.20(%X{user-id})][%3.6(%X{req-method}) %-6.-50(%X{req-url})]:
+      %X{bar}%m%n%wEx'
+    file: ''
+  level:
+    root: info
+    org:
+      springframework:
+        security: TRACE
