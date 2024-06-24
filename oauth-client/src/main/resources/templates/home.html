@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function token(){
+            fetch("/client/token")
+                .then(response => {
+                    response.json().then(function(data){
+                        console.log("text 안에 데이터 = " + data.tokenValue);
+                        window.localStorage.setItem("access_token", data.tokenValue);
+                    })
+                })
+        }
+         function boards() {
+            fetch("http://localhost:90/resource/boards", {
+                method: "GET"
+            })
+                .then(response => {
+                    response.json().then(function (data) {
+                       console.log("boards");
+                    })
+                })
+        }
+
+         function board() {
+            fetch("http://localhost:90/resource/board/2", {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("access_token")
+                }
+            })
+                .then(response => {
+                    response.json().then(function (data) {
+                       console.log("board/2");
+                    })
+                })
+        }
+
+    </script>
+</head>
+<body>
+<h1>Welcome to the Home Page</h1>
+<form action="#">
+    <p><input type="button" onclick="token()" value="access token" />
+    <p><input type="button" onclick="boards()" value="boards" />
+    <p><input type="button" onclick="board(2)" value="boards 2" />
+</form>
+<br/>
+</body>
+</html>
